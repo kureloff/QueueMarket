@@ -1,0 +1,7 @@
+Z:\VSPractice\QueueMarket\QueueMarket\bin\Debug\QueueMarket.exe.config
+Z:\VSPractice\QueueMarket\QueueMarket\bin\Debug\QueueMarket.exe
+Z:\VSPractice\QueueMarket\QueueMarket\bin\Debug\QueueMarket.pdb
+Z:\VSPractice\QueueMarket\QueueMarket\obj\Debug\QueueMarket.csproj.AssemblyReference.cache
+Z:\VSPractice\QueueMarket\QueueMarket\obj\Debug\QueueMarket.csproj.CoreCompileInputs.cache
+Z:\VSPractice\QueueMarket\QueueMarket\obj\Debug\QueueMarket.exe
+Z:\VSPractice\QueueMarket\QueueMarket\obj\Debug\QueueMarket.pdb
