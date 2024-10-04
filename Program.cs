@@ -10,21 +10,20 @@ namespace QueueMarket
         static void Main(string[] args)
         {
             Dictionary<string, int> marketProducts = ReadFile("DataBaseMarket.txt");
-
-            Work(marketProducts);
+            Random random = new Random();
+            Work(marketProducts, random);
         }
 
-        static void Work(Dictionary<string, int> marketProducts)
+        static void Work(Dictionary<string, int> marketProducts, Random random)
         {
-            Random random = new Random();
             Queue<List<string>> vouchers = new Queue<List<string>>();
 
             int maxShoppers = 15;
-            int shoppers = random.Next(maxShoppers + 1);
+            int shoppers = random.Next(1, maxShoppers + 1);
             int amountPricesProducts;
             int money = 0;
 
-            vouchers = FillQueueBuyers(marketProducts, shoppers);
+            vouchers = FillQueueBuyers(marketProducts, shoppers, random);
 
             while (true)
             {
@@ -36,14 +35,14 @@ namespace QueueMarket
             }
         }
 
-        static Queue<List<string>> FillQueueBuyers(Dictionary<string, int> marketProducts, int shoppers)
+        static Queue<List<string>> FillQueueBuyers(Dictionary<string, int> marketProducts, int shoppers, Random random)
         {
             Queue<List<string>> vouchers = new Queue<List<string>>();
             List<string> shoppingBasket = new List<string>();
 
-            for (int i = 0; i <= shoppers; i++)
+            for (int i = 0; i < shoppers; i++)
             {
-                shoppingBasket = FillShoppingBasket(marketProducts);
+                shoppingBasket = FillShoppingBasket(marketProducts, random);
                 vouchers.Enqueue(shoppingBasket);
             }
 
@@ -83,17 +82,19 @@ namespace QueueMarket
             return amountShoppingBasket;
         }
 
-        static List<string> FillShoppingBasket(Dictionary<string, int> pricesOnFood)
+        static List<string> FillShoppingBasket(Dictionary<string, int> pricesOnFood, Random random)
         {
             List<string> shoppingBasket = new List<string>();
-            Random random = new Random();
 
             int minSizeBasket = 1;
             int maxSizeBasket = 10;
+            int productsCount = random.Next(minSizeBasket, maxSizeBasket);
 
-            for (int i = 0; i <= random.Next(minSizeBasket, maxSizeBasket); i++)
+            for (int i = 0; i < productsCount; i++)
             {
-                shoppingBasket.Add(pricesOnFood.ElementAt(random.Next(pricesOnFood.Count)).Key);
+                int productIndex = random.Next(pricesOnFood.Count); 
+                string productName = pricesOnFood.ElementAt(productIndex).Key;
+                shoppingBasket.Add(productName);
             }
 
             return shoppingBasket;
